@@ -43,7 +43,7 @@ const renderWeatherData = async function(data) {
     <div class="weather__data__additional-info">
       <p class="weather__data_additional-info__humidity">Humidity ${data.rh}%</p>
       <p class="weather__data_additional-info__wind">Wind ${data.wind_spd} ${data.wind_cdir_full}</p>
-      <p class="weather__data_additional-info__precipitation">Chances of Precipitation ${data.precip}%</p>
+      <p class="weather__data_additional-info__precipitation">🌧 ${data.precip}%</p>
       <p class="weather__data_additional-info__air-quality">Air Quality ${data.aqi}</p>
     </div>
     <div class="weather__data__sun">
