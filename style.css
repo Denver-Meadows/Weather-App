@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.main__app__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.weather__data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 5px solid black;
+  padding: 1rem;
+  border-radius: 20px;
+}
+
+.weather__data__location {
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.weather__data__current {
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.weather__data__clouds {
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.weather__data__temp {
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.weather__data__additional-info {
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.weather__data__sun {
+  border: 1px solid black;
+  padding: 1rem;
+}
