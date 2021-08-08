@@ -26,8 +26,8 @@ const getWeatherData = async function() {
 const renderWeatherData = async function(data) {
   const html = `
     <div class="weather__data__location">
-      <p class="weather__data__location__city">Weather Today in ${data.city_name}, ${data.state_code}</p>
-      <p class="weather__data__loations__time">${data.datetime} ${data.timezone}</p>
+      <p class="weather__data__location__city">Weather Today <br>${data.city_name}, ${data.state_code}</p>
+      <p class="weather__data__location__time">${data.ob_time}</p>
     </div>
     <div class="weather__data__current">
       <p class="weather__data__current__icon"><img src="src/icons/${data.weather.icon}.png" alt=""></p>
@@ -35,18 +35,17 @@ const renderWeatherData = async function(data) {
     </div>
     <div class="weather__data__temp">
       <p class="weather__data__temp__actual">${data.temp}°</p>
-      <p class="weather__data__temp__feels-like">Feels like ${data.app_temp}°</p>
+      <p class="weather__data__temp__feels-like">Feels like <span class="number">${Math.round(data.app_temp)}°</span></p>
     </div>
     <div class="weather__data__additional-info">
-      <p class="weather__data__additional-info__humidity">Humidity ${data.rh}%</p>
-      <p class="weather__data__additional-info__wind">Wind ${data.wind_spd}mph ${data.wind_cdir_full}</p>
-      <p class="weather__data__additional-info__precipitation">🌧 ${data.precip}%</p>
-      <p class="weather__data__additional-info__air-quality">Air Quality ${data.aqi}</p>
-      <p class="weather__data__additional-info__dewpt">Dew Point ${data.dewpt}°</p>
+      <p class="weather__data__additional-info__humidity">Humidity:   <span class="number">${data.rh}%</span></p>
+      <p class="weather__data__additional-info__wind">Wind:  <span class="number">${data.wind_spd}</span>mph ${data.wind_cdir}</p>
+      <p class="weather__data__additional-info__air-quality">Air Quality:  <span class="number">${data.aqi}</span></p>
+      <p class="weather__data__additional-info__dewpt">Dew Point:   <span class="number">${data.dewpt}°</span></p>
     </div>
     <div class="weather__data__sun">
-      <p class="weather__data__sun-rise">Sunrise ${data.sunrise}</p>
-      <p class="weather__data__sun-set">Sunset ${data.sunset}</p>
+      <p class="weather__data__sun-rise">Sunrise:   ${data.sunrise}</p>
+      <p class="weather__data__sun-set">Sunset:   ${data.sunset}</p>
     </div>
   `
   weatherDataContainer.insertAdjacentHTML('beforeend', html)

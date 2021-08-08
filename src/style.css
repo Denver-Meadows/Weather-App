@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand:wght@300;500&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +13,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  font-family: 'Playfair Display', serif;
 }
 
 .weather__data {
@@ -19,37 +23,63 @@
   justify-content: center;
   text-align: center;
   border: 5px solid black;
-  padding: 1rem;
+  padding: 0 2rem;
   border-radius: 20px;
 }
 
-.weather__data__location {
-  border: 1px solid black;
-  padding: 1rem;
+/* .weather__data__location {
+} */
+
+.weather__data__location__city {
+  font-size: 1.5rem;
+  margin-bottom: .3rem;
 }
 
-.weather__data__current {
-  border: 1px solid black;
-  padding: 1rem;
+.weather__data__location__time {
+  font-size: 1.2rem;
+
 }
 
-.weather__data__clouds {
-  border: 1px solid black;
+/* .weather__data__current {
   padding: 1rem;
-}
+} */
+
+/* .weather__data__current__icon {
+
+} */
 
 .weather__data__temp {
-  border: 1px solid black;
   padding: 1rem;
+}
+
+
+.weather__data__temp__actual {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2rem;
+  margin-bottom: .5rem;
+}
+
+.number {
+  font-family: 'Quicksand', sans-serif;
 }
 
 .weather__data__additional-info {
-  border: 1px solid black;
   padding: 1rem;
 }
 
+.weather__data__additional-info__humidity {
+  margin-bottom: .4rem;
+}
+
+.weather__data__additional-info__wind {
+  margin-bottom: .4rem;
+}
+
+.weather__data__additional-info__air-quality {
+  margin-bottom: .4rem;
+}
+
 .weather__data__sun {
-  border: 1px solid black;
   padding: 1rem;
 }
 
