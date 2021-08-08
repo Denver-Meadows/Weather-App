@@ -7,13 +7,13 @@
   box-sizing: border-box;
 }
 
-
 .main__app__container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   font-family: 'Playfair Display', serif;
+  background-image: linear-gradient(rgb(112, 110, 110), rgb(179, 179, 179));
 }
 
 .weather__data {
@@ -25,6 +25,7 @@
   border: 5px solid black;
   padding: 0 2rem;
   border-radius: 20px;
+  background-image: linear-gradient(rgb(240, 85, 85), rgb(236, 172, 172));
 }
 
 /* .weather__data__location {
