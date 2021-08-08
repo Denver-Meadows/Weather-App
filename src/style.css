@@ -11,9 +11,34 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
   font-family: 'Playfair Display', serif;
   background-image: linear-gradient(rgb(112, 110, 110), rgb(179, 179, 179));
+}
+
+.location__selection input {
+  width: 14.5rem;
+  border-radius: 6px;
+  height: 2rem;
+  padding-left: .5rem;
+  border: 3px solid black;
+  margin-bottom: .3rem;
+}
+
+.location__selection__button {
+  display: block;
+  width: 14.5rem;
+  border-radius: 6px;
+  height: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: .5rem .5rem 1rem black;
+  cursor: pointer;
+  border: 2px solid black;
+};
+
+.location__selection__button:hover{
+  transform: translateY(-5px);
 }
 
 .weather__data {
@@ -26,6 +51,7 @@
   padding: 0 2rem;
   border-radius: 20px;
   background-image: linear-gradient(rgb(240, 85, 85), rgb(236, 172, 172));
+  box-shadow: 1rem 2rem 2rem black;
 }
 
 /* .weather__data__location {

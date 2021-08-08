@@ -1,14 +1,22 @@
 const API_KEY = 'ff443ec09c8845ecb4df38d8b5c818bf';
+const weatherDataContainer = document.querySelector('.weather__data');
+const userInput = document.querySelector('.location__selection__input');
+const userInputBtn = document.querySelector('.location__selection__button');
 
 const state = {
   data: [],
 }
 
-const weatherDataContainer = document.querySelector('.weather__data')
+userInputBtn.addEventListener('click', (e) => {
+  const zipcode = userInput.value
+  weatherDataContainer.innerHTML = '';
+  getWeatherData(zipcode)
+  userInput.value = '';
+})
 
-const getWeatherData = async function() {
+const getWeatherData = async function(zipcode) {
   try {
-    const request = fetch(`https://api.weatherbit.io/v2.0/current?&postal_code=45039&country=US&key=${API_KEY}&units=I&include=minutely`)
+    const request = fetch(`https://api.weatherbit.io/v2.0/current?&postal_code=${zipcode}&country=US&key=${API_KEY}&units=I&include=minutely`)
     const res = await request;
     const data = await res.json();
 
@@ -50,5 +58,3 @@ const renderWeatherData = async function(data) {
   `
   weatherDataContainer.insertAdjacentHTML('beforeend', html)
 }
-
-getWeatherData()
