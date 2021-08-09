@@ -2,6 +2,12 @@ const API_KEY = 'ff443ec09c8845ecb4df38d8b5c818bf';
 const weatherDataContainer = document.querySelector('.weather__data');
 const userInput = document.querySelector('.location__selection__input');
 const userInputBtn = document.querySelector('.location__selection__button');
+const dateAndTime = document.querySelector('.weather__data__location__time');
+
+// Need to do
+// Take city or zip
+// Render Errors
+// Format sunrise and sunset
 
 const state = {
   data: [],
@@ -11,6 +17,7 @@ userInputBtn.addEventListener('click', (e) => {
   const zipcode = userInput.value
   weatherDataContainer.innerHTML = '';
   getWeatherData(zipcode)
+  
   userInput.value = '';
 })
 
@@ -31,11 +38,23 @@ const getWeatherData = async function(zipcode) {
   }
 }
 
+const convertDate = function(data) {
+  const dateOnly = data.slice(0, 10)
+  const [year, month, day] = dateOnly.split('-');
+  return `${month}/${day}/${year}`
+};
+
+const localTime = function() {
+  const offset = new Date().getTimezoneOffset();
+  console.log(offset)
+}
+localTime()
+
 const renderWeatherData = async function(data) {
   const html = `
     <div class="weather__data__location">
       <p class="weather__data__location__city">Weather Today <br>${data.city_name}, ${data.state_code}</p>
-      <p class="weather__data__location__time">${data.ob_time}</p>
+      <p class="weather__data__location__time">${convertDate(data.ob_time)}</p>
     </div>
     <div class="weather__data__current">
       <p class="weather__data__current__icon"><img src="src/icons/${data.weather.icon}.png" alt=""></p>
