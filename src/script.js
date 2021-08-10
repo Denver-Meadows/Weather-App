@@ -54,6 +54,11 @@ const localTime = function(time) {
   const offset = new Date().getTimezoneOffset();
   const offsetHours = offset / 60;
 
+  var zipcode_to_timezone = require( 'zipcode-to-timezone' );
+
+  var tz = zipcode_to_timezone.lookup( '94110' );
+  console.log( tz ); // America/Los_Angeles
+
   const [hour, minutes] = time.split(':')
   const formattedHour = getFormattedHour(hour) - offsetHours
 
