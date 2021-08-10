@@ -44,11 +44,17 @@ const convertDate = function(data) {
   return `${month}/${day}/${year}`
 };
 
-const localTime = function() {
+const localTime = function(time) {
   const offset = new Date().getTimezoneOffset();
-  console.log(offset)
+  const offsetHours = offset / 60;
+
+  const [hour, minutes] = time.split(':')
+  const formattedHour = hour - offsetHours
+  console.log(formattedHour)
+  console.log(`${formattedHour >= 13 ? formattedHour - 12 : formattedHour}:${minutes}${formattedHour < 12 ? 'am' : 'pm'}`)
+
 }
-localTime()
+localTime('23:45')
 
 const renderWeatherData = async function(data) {
   const html = `
