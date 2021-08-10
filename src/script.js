@@ -44,17 +44,24 @@ const convertDate = function(data) {
   return `${month}/${day}/${year}`
 };
 
+const getFormattedHour = function(hour) {
+  if (hour >= 13) return hour - 12;
+  if (hour === '00') return 25;
+  else return hour;
+}
+
 const localTime = function(time) {
   const offset = new Date().getTimezoneOffset();
   const offsetHours = offset / 60;
 
   const [hour, minutes] = time.split(':')
-  const formattedHour = hour - offsetHours
-  console.log(formattedHour)
-  console.log(`${formattedHour >= 13 ? formattedHour - 12 : formattedHour}:${minutes}${formattedHour < 12 ? 'am' : 'pm'}`)
+  const formattedHour = getFormattedHour(hour) - offsetHours
 
+  return `${formattedHour >= 13 ? formattedHour - 12 : formattedHour}:${minutes} ${formattedHour < 12 ? 'am' : 'pm'}`
 }
-localTime('23:45')
+localTime('00:45')
+
+
 
 const renderWeatherData = async function(data) {
   const html = `
@@ -77,8 +84,8 @@ const renderWeatherData = async function(data) {
       <p class="weather__data__additional-info__dewpt">Dew Point:   <span class="number">${data.dewpt}°</span></p>
     </div>
     <div class="weather__data__sun">
-      <p class="weather__data__sun-rise">Sunrise:   ${data.sunrise}</p>
-      <p class="weather__data__sun-set">Sunset:   ${data.sunset}</p>
+      <p class="weather__data__sun-rise">Sunrise:   ${localTime(data.sunrise)}</p>
+      <p class="weather__data__sun-set">Sunset:   ${localTime(data.sunset)}</p>
     </div>
   `
   weatherDataContainer.insertAdjacentHTML('beforeend', html)
