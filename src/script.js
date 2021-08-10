@@ -11,6 +11,7 @@ const dateAndTime = document.querySelector('.weather__data__location__time');
 
 const state = {
   data: [],
+  timeZone: '',
 }
 
 userInputBtn.addEventListener('click', (e) => {
@@ -29,6 +30,7 @@ const getWeatherData = async function(zipcode) {
 
     // if (res.ok) console.log('ok')
     state.data = data.data[0]
+    state.timeZone = data.data[0].timezone
     console.log(state.data)
 
     renderWeatherData(state.data)
@@ -52,25 +54,32 @@ const getFormattedHour = function(hour) {
   else return hour;
 }
 
+const utcOffset = function() {
+  if (state.timeZone === "America/New_York") return 4;
+  if (state.timeZone === "America/Chicago") return 5;
+  if (state.timeZone === "America/Denver") return 6;
+  if (state.timeZone === "America/Los_Angeles") return 7;
+  if (state.timeZone === "America/") return 9;
+  if (state.timeZone === "America/Honolulu") return 10;
+}
+
 const localTime = function(time) {
-  const offset = new Date().getTimezoneOffset();
-  const offsetHours = offset / 60;
-
-  // if central
-
+  const offset = utcOffset();
+  console.log(offset)
   const [hour, minutes] = time.split(':')
-  const formattedHour = getFormattedHour(hour) - offsetHours
+  console.log(hour)
+  const formattedHour = getFormattedHour(hour) - offset
 
   return `${formattedHour >= 13 ? formattedHour - 12 : formattedHour}:${minutes} ${formattedHour < 12 ? 'am' : 'pm'}`
 }
-console.log(localTime('00:45'))
+
 
 
 
 
 
 const renderWeatherData = async function(data) {
-  console.log(data.sunrise)
+
   const html = `
     <div class="weather__data__location">
       <p class="weather__data__location__city">Weather Today <br>${data.city_name}, ${data.state_code}</p>
