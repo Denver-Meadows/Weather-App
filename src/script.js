@@ -44,6 +44,8 @@ const convertDate = function(data) {
   return `${month}/${day}/${year}`
 };
 
+
+// works for local time
 const getFormattedHour = function(hour) {
   if (hour >= 13) return hour - 12;
   if (hour === '00') return 25;
@@ -54,6 +56,8 @@ const localTime = function(time) {
   const offset = new Date().getTimezoneOffset();
   const offsetHours = offset / 60;
 
+  // if central
+
   const [hour, minutes] = time.split(':')
   const formattedHour = getFormattedHour(hour) - offsetHours
 
@@ -63,7 +67,10 @@ console.log(localTime('00:45'))
 
 
 
+
+
 const renderWeatherData = async function(data) {
+  console.log(data.sunrise)
   const html = `
     <div class="weather__data__location">
       <p class="weather__data__location__city">Weather Today <br>${data.city_name}, ${data.state_code}</p>
